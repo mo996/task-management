@@ -26,6 +26,32 @@ Spring Boot REST API for a Task Management System with features such as user man
     * Hibernate
     * Lombok
     * RESTful API design
+    * *JUnit 5
+
+**Project Structure:**
+
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── daaeboul
+    │   │           └── taskmanagementsystem
+    │   │               ├── controller   // REST controllers for API endpoints
+    │   │               ├── exceptions   // Custom exception classes for error handling
+    │   │               ├── model       // Entity classes representing data models
+    │   │               ├── repository  // JPA repositories for data access
+    │   │               └── service     // Service classes for business logic
+    │   └── resources
+    │       ├── application.properties  // Configuration file for the application
+    │       └── data.sql                // Initial data for the database 
+    └── test
+        └── java
+            └── com
+                └── daaeboul
+                    └── taskmanagementsystem
+                        └── repository  // Test classes for JPA repositories
+                        └── Service  // Test classes for Service classes
+
 
 ### Getting Started (Coming Soon)
 
