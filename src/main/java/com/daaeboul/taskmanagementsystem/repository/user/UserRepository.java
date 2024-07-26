@@ -7,6 +7,7 @@ import lombok.NonNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -80,6 +81,7 @@ public interface UserRepository extends BaseSoftDeletableRepository<User, Long> 
      *
      * @return A List of all users, regardless of their deleted status.
      */
+    @RestResource(path = "findAllIncludingDeletedList", rel = "findAllIncludingDeletedList")
     @Query("select u from User u")
     List<User> findAllIncludingDeleted();
 
@@ -89,6 +91,7 @@ public interface UserRepository extends BaseSoftDeletableRepository<User, Long> 
      * @param pageable The object containing pagination information (page number, page size, sorting).
      * @return A Page of all users, regardless of their deleted status.
      */
+    @RestResource(path = "findAllIncludingDeletedPaged", rel = "findAllIncludingDeletedPaged")
     @Query("select u from User u")
     Page<User> findAllIncludingDeleted(Pageable pageable);
 

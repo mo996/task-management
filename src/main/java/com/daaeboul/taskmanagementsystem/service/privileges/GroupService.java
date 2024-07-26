@@ -82,7 +82,7 @@ public class GroupService {
      * @throws RuntimeException (Or a more specific exception) if validation of the group name fails.
      */
     @Transactional
-    public Group updateGroup(Group updatedGroup) {
+    public Optional<Group> updateGroup(Group updatedGroup) {
         Group existingGroup = groupRepository.findById(updatedGroup.getId())
                 .orElseThrow(() -> new GroupNotFoundException(updatedGroup.getId()));
 
@@ -93,7 +93,7 @@ public class GroupService {
 
         validateGroupName(existingGroup.getGroupName());
 
-        return groupRepository.save(existingGroup);
+        return Optional.of(groupRepository.save(existingGroup));
     }
 
     /**

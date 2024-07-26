@@ -4,6 +4,7 @@ import com.daaeboul.taskmanagementsystem.model.project.Project;
 import com.daaeboul.taskmanagementsystem.repository.BaseSoftDeletableRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;

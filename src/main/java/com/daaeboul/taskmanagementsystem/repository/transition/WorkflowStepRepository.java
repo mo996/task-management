@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -40,6 +41,7 @@ public interface WorkflowStepRepository extends JpaRepository<WorkflowStep, Work
      * @param workflowId The ID of the workflow.
      * @return A list of WorkflowStep entities associated with the specified workflow.
      */
+    @RestResource(path = "findAllByWorkflowId", rel = "findAllByWorkflowId")
     @Query("SELECT ws FROM WorkflowStep ws WHERE ws.workflow.id = :workflowId")
     List<WorkflowStep> findAllByWorkflowId(@Param("workflowId") Long workflowId);
 
@@ -50,6 +52,7 @@ public interface WorkflowStepRepository extends JpaRepository<WorkflowStep, Work
      * @param pageable  Pagination and sorting parameters.
      * @return A Page of WorkflowStep entities associated with the specified workflow.
      */
+    @RestResource(path = "findAllByWorkflowIdPaged", rel = "findAllByWorkflowIdPaged")
     @Query("SELECT ws FROM WorkflowStep ws WHERE ws.workflow.id = :workflowId")
     Page<WorkflowStep> findAllByWorkflowId(@Param("workflowId") Long workflowId, Pageable pageable);
 

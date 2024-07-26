@@ -24,6 +24,16 @@ public class RoleService {
     }
 
     /**
+     * Retrieves a Role from the database by its id.
+     *
+     * @param roleId The ID of the Role to retrieve.
+     * @return An Optional containing the Role if found, otherwise an empty Optional.
+     */
+    public Optional<Role> findRoleById(Long roleId) {
+        return roleRepository.findById(roleId);
+    }
+
+    /**
      * Retrieves a Role from the database by its name.
      *
      * @param roleName The name of the Role to retrieve.
@@ -31,6 +41,14 @@ public class RoleService {
      */
     public Optional<Role> findRoleByName(String roleName) {
         return roleRepository.findByRoleName(roleName);
+    }
+
+    /**
+     * Retrieves a list of all Roles .
+     * @return A List of Roles.
+     */
+    public List<Role> findAllRoles() {
+        return roleRepository.findAll();
     }
 
     /**

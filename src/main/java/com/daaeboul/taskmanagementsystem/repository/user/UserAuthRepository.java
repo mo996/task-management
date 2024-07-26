@@ -15,6 +15,8 @@ import java.util.Optional;
 @Repository
 public interface UserAuthRepository extends BaseSoftDeletableRepository<UserAuth, Long> {
 
+    Optional<UserAuth> findByUser_Username(String username);
+
     /**
      * Retrieves a UserAuth from the database based on its unique authentication token.
      *

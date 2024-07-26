@@ -142,5 +142,6 @@ public class PermissionService {
             throw new DuplicatePermissionNameException(permissionName);
         }
     }
+
 }
 

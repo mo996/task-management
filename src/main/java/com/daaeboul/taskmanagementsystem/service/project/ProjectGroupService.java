@@ -35,7 +35,6 @@ public class ProjectGroupService {
     public ProjectGroup createProjectGroup(ProjectGroup projectGroup) {
         return projectGroupRepository.save(projectGroup);
     }
-
     /**
      * Finds a project-group association by its composite ID.
      *

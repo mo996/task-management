@@ -131,8 +131,13 @@ public class WorkflowStepRepositoryTest {
     void findByWorkflowIdAndStatusName_returnsWorkflowStepsWithMatchingCriteria() {
         List<WorkflowStep> foundSteps = workflowStepRepository.findByWorkflowIdAndStatusName(workflow.getId(), "Status 1");
         assertThat(foundSteps).hasSize(1);
-        assertThat(foundSteps.get(0)).isEqualTo(step1);
+        WorkflowStep foundStep = foundSteps.get(0);
+
+        assertThat(foundStep.getWorkflow().getId()).isEqualTo(step1.getWorkflow().getId());
+        assertThat(foundStep.getStatus().getId()).isEqualTo(step1.getStatus().getId());
+        assertThat(foundStep.getSequenceNumber()).isEqualTo(step1.getSequenceNumber());
     }
+
 
     @Test
     void findByWorkflowIdAndStatusName_returnsEmptyListForNonMatchingCriteria() {

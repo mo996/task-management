@@ -75,12 +75,12 @@ public class GroupController {
     /**
      * Updates a group with the given ID.
      *
-     * @param groupId  The ID of the group to update.
-     * @param group The updated group data.
+     * @param groupId The ID of the group to update.
+     * @param group   The updated group data.
      * @return The updated group with HTTP status 200 (OK) if found, otherwise 404 (Not Found).
      */
     @PutMapping("/{groupId}")
-    public ResponseEntity<Group> updateGroup(@PathVariable Long groupId, @RequestBody Group group) {
+    public ResponseEntity<Optional<Group>> updateGroup(@PathVariable Long groupId, @RequestBody Group group) {
         // 1. Fetch the existing group (to get its ID)
         Group existingGroup = groupService.findGroupById(groupId)
                 .orElseThrow(() -> new GroupNotFoundException(groupId));
@@ -98,7 +98,7 @@ public class GroupController {
         existingGroup.setUsers(group.getUsers());
 
         // 4. Save and return the updated group
-        Group updatedGroup = groupService.updateGroup(existingGroup);
+        Optional<Group> updatedGroup = groupService.updateGroup(existingGroup);
         return ResponseEntity.ok(updatedGroup);
     }
 
